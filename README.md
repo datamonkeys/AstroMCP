@@ -18,6 +18,16 @@ Coordinates are ICRS decimal degrees; times are ISO 8601 UTC. Responses are comp
 `{"error": "..."}` and, in `whats_here`, as `sources_failed` plus a `caveat` so a missing archive is never
 mistaken for "nothing known".
 
+
+### `observe_tonight` — what to observe tonight
+
+Recent (default ≤ 21 days), bright (TNS discovery mag ≤ 18.5) transients that are **still unclassified**
+on TNS and observable from your site tonight (above 30° while the Sun is below −12°, ≥ 20° from the Moon),
+ranked by brightness, age and window length. Built to help small telescopes and spectroscopy groups pick
+classification targets. Example: `observe_tonight(lat=-25.43, lon=-49.27)` (Curitiba).
+Sun/Moon from the Astronomical Almanac low-precision formulas (arcminute level; tests check Polaris,
+equinox/solstice and the 2026-10-26 full Moon).
+
 ## Install
 
 Requires [uv](https://docs.astral.sh/uv/) and Python 3.13+.

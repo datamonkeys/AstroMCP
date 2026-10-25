@@ -10,6 +10,7 @@ from mcp.server.mcpserver import MCPServer
 from mcp.types import ToolAnnotations
 
 from . import __version__, net
+from .observe import observe_tonight as _observe_tonight
 from .sources import alerce, fink, skybot, tess, tns, vizier
 from .sources import cutouts as cut
 from .sources import simbad as sim
@@ -178,6 +179,36 @@ def cutout_urls(ra: float, dec: float, size_arcsec: float = 60.0) -> dict[str, A
     def go() -> dict[str, Any]:
         validate_position(ra, dec, size_arcsec, 3600)
         return cut.urls(ra, dec, size_arcsec)
+
+    return _safe(go)
+
+
+@mcp.tool(annotations=RO)
+def observe_tonight(
+    lat: float,
+    lon: float,
+    date: str | None = None,
+    mag_limit: float = 18.5,
+    max_age_days: float = 21.0,
+    min_altitude: float = 30.0,
+    min_moon_sep: float = 20.0,
+    include_classified: bool = False,
+    limit: int = 30,
+) -> dict[str, Any]:
+    """What to observe tonight: recent (<= max_age_days), bright (TNS discovery mag <= mag_limit)
+    transients that are still UNCLASSIFIED on TNS and observable from the site (lat/lon in degrees,
+    east-positive longitude) during the night starting on the local evening of `date` (YYYY-MM-DD,
+    default today UTC): above min_altitude while the Sun is below -12 deg and at least min_moon_sep
+    from the Moon. Ranked by priority (brighter, younger, longer window). Use it to plan follow-up
+    photometry or spectroscopic classification. Returns night window, Moon illumination and targets
+    with max altitude, transit time, observing window and TNS link."""
+
+    def go() -> dict[str, Any]:
+        if not (-90 <= lat <= 90 and -180 <= lon <= 360):
+            raise ValueError("lat must be in [-90, 90] and lon in [-180, 360]")
+        return _observe_tonight(
+            lat, lon, date, mag_limit, max_age_days, min_altitude, min_moon_sep, include_classified, max(1, min(limit, 200))
+        )
 
     return _safe(go)
 

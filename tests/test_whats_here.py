@@ -83,5 +83,5 @@ async def test_tools_registered() -> None:
     tools = {t.name for t in await server.mcp.list_tools()}
     assert tools == {
         "whats_here", "tns_object", "tns_search", "ztf_lightcurve", "ztf_objects_near", "rubin_object",
-        "rubin_recent", "simbad", "vsx", "gaia", "tess_known", "asteroids_at", "cutout_urls",
+        "rubin_recent", "simbad", "vsx", "gaia", "tess_known", "asteroids_at", "cutout_urls", "observe_tonight",
     }  # fmt: skip
