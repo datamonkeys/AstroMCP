@@ -47,7 +47,7 @@ def whats_here(ra: float, dec: float, radius_arcsec: float = 5.0, epoch: str | N
     """Is it already known? Query TNS, SIMBAD, VSX, Gaia DR3, ExoFOP TOI/CTOI, ZTF (ALeRCE) and,
     if `epoch` (ISO UTC, e.g. '2026-10-20T03:15:00') is given, known asteroids (SkyBoT), all in
     parallel. Returns a verdict (the most specific of: 'known transient', 'known TESS object of interest',
-    'known variable', 'known asteroid', 'star', 'known object', 'nothing known'), all matching labels, one-line evidence per hit, which
+    'known variable', 'known asteroid', 'star', 'known ZTF alert source', 'known object', 'nothing known'), all matching labels, one-line evidence per hit, which
     sources failed, per-source details and image cutout links. ra/dec in decimal degrees (ICRS)."""
 
     def go() -> dict[str, Any]:

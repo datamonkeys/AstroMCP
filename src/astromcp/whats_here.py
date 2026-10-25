@@ -86,6 +86,8 @@ def _verdict(r: dict[str, dict[str, Any]], radius: float) -> tuple[list[str], li
     star = bool(near and near.get("likely_star") and near["sep_arcsec"] is not None and near["sep_arcsec"] <= 1.5)
     if star or any(str(o.get("otype", "")).endswith("*") and (o.get("sep_arcsec") or 99) <= 1.5 for o in sim):
         labels.append("star")
+    if ztf:
+        labels.append("known ZTF alert source")
     if sim and not labels:
         labels.append("known object")
     return (labels or ["nothing known"]), ev
@@ -107,13 +109,22 @@ def whats_here(
     results = _run(jobs, timeout)
     labels, evidence = _verdict(results, radius_arcsec)
     failed = sorted(k for k, v in results.items() if v["status"] != "ok")
+    caveats = [f"verdict may be incomplete: {', '.join(failed)} did not answer"] if failed else []
+    tns_src = str(results.get("tns", {}).get("source", ""))
+    if results.get("tns", {}).get("status") == "ok" and "archive" in tns_src.lower() and not results["tns"].get("objects"):
+        caveats.append(
+            "TNS was checked only against the daily public archive (built at 00:00 UTC); objects reported "
+            "since then are missed — set TNS bot credentials for a live check"
+        )
+        if labels == ["nothing known"]:
+            labels = ["nothing known (TNS only checked against the daily archive)"]
     out: dict[str, Any] = {
         "query": {"ra": ra, "dec": dec, "radius_arcsec": radius_arcsec, "epoch": epoch},
         "verdict": labels[0],
         "labels": labels,
         "evidence": evidence,
         "sources_failed": failed,
-        "caveat": (f"verdict may be incomplete: {', '.join(failed)} did not answer" if failed else None),
+        "caveat": "; ".join(caveats) or None,
         "details": results,
         "images": cutouts.urls(ra, dec, 60),
     }

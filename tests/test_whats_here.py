@@ -54,6 +54,24 @@ def test_nothing_known_with_failure(offline: FakeNet) -> None:
     assert "gaia" in r["sources_failed"]
 
 
+def test_archive_only_tns_is_not_a_clean_nothing_known(offline: FakeNet, monkeypatch: object) -> None:
+    """Without credentials TNS falls back to the daily archive, which misses objects
+    reported today (seen live with AT 2025andj): say so, and still report the ZTF source."""
+    from astromcp.sources import tns
+
+    _common(offline)
+    offline.add("sim-tap", "simbad_empty.csv")
+    offline.add("B%2Fvsx", "vsx_empty.tsv")
+    offline.add("gaiadr3", "gaia_empty.tsv")
+    offline.add("objects/?", "alerce_cone_agtq.json")
+    monkeypatch.setattr(  # type: ignore[attr-defined]
+        tns, "search", lambda ra, dec, r: {"source": "TNS public archive (daily)", "objects": []}
+    )
+    r = whats_here(40.22898, 12.601026, 5)
+    assert r["verdict"] == "known ZTF alert source"
+    assert "daily public archive" in r["caveat"]
+
+
 def test_server_tools_validate_input() -> None:
     assert "error" in server.whats_here(400.0, 0.0)
     assert "error" in server.gaia(10.0, 95.0)
