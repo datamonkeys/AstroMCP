@@ -1,0 +1,48 @@
+[project]
+name = "astromcp"
+version = "0.1.0"
+description = "MCP server giving AI assistants direct access to public astronomy archives (TNS, SIMBAD, VSX, Gaia, ExoFOP, ALeRCE/ZTF, Fink/Rubin, SkyBoT)"
+readme = "README.md"
+authors = [
+    { name = "Louis Perner", email = "31986061+louisperner@users.noreply.github.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "mcp>=2.3.0",
+]
+
+license = "MIT"
+
+[project.scripts]
+astromcp = "astromcp.server:main"
+
+[build-system]
+requires = ["uv_build>=0.11.7,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "mypy>=2.4.0",
+    "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
+    "ruff>=0.17.2",
+]
+
+[tool.ruff]
+line-length = 130
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E501", "B905"]
+
+[tool.mypy]
+strict = true
+files = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["integration: queries the real archives (run with: pytest -m integration)"]
+addopts = "-m 'not integration'"
+asyncio_mode = "auto"
+pythonpath = ["tests"]

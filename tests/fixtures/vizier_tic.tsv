@@ -1,0 +1,38 @@
+#
+#   VizieR Astronomical Server vizier.cds.unistra.fr
+#    Date: 2026-10-25T20:36:40 [V7.6.2]
+#   In case of problem, please report to:	cds-question@unistra.fr
+#
+#
+#Coosys	J2000:	eq_FK5 J2000
+#INFO	service_protocol=ASU	  IVOID of the protocol through which the data was retrieved
+#INFO	request_date=2026-10-25T20:36:41	  Query execution date
+#INFO	request=https://vizier.cds.unistra.fr/viz-bin/asu-tsv?-source=IV%2F39%2Ftic82&TIC=180991313&-out=TIC%2CRAJ2000%2CDEJ2000&-out.max=1	  Full request URL
+#INFO	contact=cds-question@unistra.fr	  Email or URL to contact publisher
+#INFO	server_software=VizieR/7.6.2	  Software version
+#INFO	publisher=CDS	  Data centre that produced the VOTable
+
+#RESOURCE=yCat_4039
+#Name: IV/39
+#Title: TESS Input Catalog version 8.2 (TIC v8.2) (Paegert+, 2021)
+#INFO	ivoid=ivo://cds.vizier/iv/39	    IVOID of underlying data collection
+#INFO	data_ivoid=ivo://cds.vizier/iv/39	    IVOID of underlying data collection
+#INFO	creator=Paegert M.	    First author or institution
+#INFO	cites=bibcode:2021arXiv210804778P	    Article or Data origin sources
+#INFO	journal=arXi	    Journal name
+#INFO	original_date=2021	    Year of the article publication
+#INFO	reference_url=https://cdsarc.cds.unistra.fr/viz-bin/cat/IV/39	    Dataset landing page
+#INFO	publication_date=2024-02-20	    Date of first publication in the data centre
+#INFO	rights_uri=https://cds.unistra.fr/vizier-org/licences_vizier.html	    Licence URI
+#Coosys	J2000_2000.000:	eq_FK5 J2000
+#Table	IV_39_tic82:
+#Name: IV/39/tic82
+#Title: Transiting Exoplanet Survey Satellite (TESS) Input Catalog - v8.2 (TIC-8.2), outpout (on a total of 1,727,987,580 sources)
+#Column	TIC	(I11)	[1/10005000540] TESS Input Catalog identifier ( ID ) (1)	[ucd=meta.id;meta.main]
+#Column	RAJ2000	(F15.11)	Right Ascension (J2000) (ra) (2)	[ucd=pos.eq.ra;meta.main]
+#Column	DEJ2000	(F15.11)	Declination (J2000) (dec) (2)	[ucd=pos.eq.dec;meta.main]
+TIC	RAJ2000	DEJ2000
+ 	deg	deg
+-----------	---------------	---------------
+  180991313	172.85872235052	-41.68952750659
+

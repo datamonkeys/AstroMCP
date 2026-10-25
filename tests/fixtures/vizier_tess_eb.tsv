@@ -1,0 +1,41 @@
+#
+#   VizieR Astronomical Server vizier.cds.unistra.fr
+#    Date: 2026-10-25T20:37:07 [V7.6.2]
+#   In case of problem, please report to:	cds-question@unistra.fr
+#
+#
+#Coosys	J2000:	eq_FK5 J2000
+#INFO	service_protocol=ASU	  IVOID of the protocol through which the data was retrieved
+#INFO	request_date=2026-10-25T20:37:07	  Query execution date
+#INFO	request=https://vizier.cds.unistra.fr/viz-bin/asu-tsv?-source=J%2FApJS%2F258%2F16%2Ftess-ebs&-c=175.108299+-06.102530&-c.rs=30&-out=TIC%2CPer%2CMorph&-out.add=_r&-c.u=arcsec&-sort=_r&-out.max=10	  Full request URL
+#INFO	contact=cds-question@unistra.fr	  Email or URL to contact publisher
+#INFO	server_software=VizieR/7.6.2	  Software version
+#INFO	publisher=CDS	  Data centre that produced the VOTable
+#INFO	-c=175.108299-06.102530,rs=30.	
+#Constraint -out.max=10
+
+#RESOURCE=yCat_22580016
+#Name: J/ApJS/258/16
+#Title: TESS Eclipsing Binary stars. I. Sectors 1-26 (Prsa+, 2022)
+#INFO	ivoid=ivo://cds.vizier/j/apjs/258/16	    IVOID of underlying data collection
+#INFO	data_ivoid=ivo://cds.vizier/j/apjs/258/16	    IVOID of underlying data collection
+#INFO	creator=Prsa A.	    First author or institution
+#INFO	cites=bibcode:2022ApJS..258...16P	    Article or Data origin sources
+#INFO	journal=ApJS	    Journal name
+#INFO	original_date=2022	    Year of the article publication
+#INFO	reference_url=https://cdsarc.cds.unistra.fr/viz-bin/cat/J/ApJS/258/16	    Dataset landing page
+#INFO	citation=doi:10.26093/cds/vizier.22580016	    Dataset identifier that can be used for citation
+#INFO	publication_date=2022-12-16	    Date of first publication in the data centre
+#INFO	rights_uri=https://cds.unistra.fr/vizier-org/licences_vizier.html	    Licence URI
+#Table	J_ApJS_258_16_tess-ebs:
+#Name: J/ApJS/258/16/tess-ebs
+#Title: The Eclipsing Binary stars (TESS-EBs) catalog
+#Column	_r	(F6.3)	Distance from center (175.1082990000-06.1025300000)[FK5/J2000]	[ucd=pos.angDistance]
+#Column	TIC	(A10)	[91961/2046417955] TESS input catalog (TIC) identification number (tess_id)	[ucd=meta.id;meta.main]
+#Column	Per	(F11.7)	[0.048/314.7]? Binary star orbital period (period)	[ucd=meta.id]
+#Column	Morph	(F6.3)	[-1/1.08] Morphology coefficient (morph_coeff) (3)	[ucd=src.morph.param]
+_r	TIC	Per	Morph
+arcsec	 	d	
+------	----------	-----------	------
+ 0.001	0185259483	  0.3105640	 0.837
+

@@ -1,0 +1,50 @@
+#
+#   VizieR Astronomical Server vizier.cds.unistra.fr
+#    Date: 2026-10-25T20:35:16 [V7.6.2]
+#   In case of problem, please report to:	cds-question@unistra.fr
+#
+#
+#Coosys	J2000:	eq_FK5 J2000
+#INFO	service_protocol=ASU	  IVOID of the protocol through which the data was retrieved
+#INFO	request_date=2026-10-25T20:35:16	  Query execution date
+#INFO	request=https://vizier.cds.unistra.fr/viz-bin/asu-tsv?-source=I%2F355%2Fgaiadr3&-c=172.858720+-41.689530&-c.rs=5.0&-out=Source%2CRA_ICRS%2CDE_ICRS%2CGmag%2CBP-RP%2CPlx%2Ce_Plx%2CpmRA%2CpmDE%2CRUWE%2CVarFlag&-out.add=_r&-c.u=arcsec&-sort=_r&-out.max=10	  Full request URL
+#INFO	contact=cds-question@unistra.fr	  Email or URL to contact publisher
+#INFO	server_software=VizieR/7.6.2	  Software version
+#INFO	publisher=CDS	  Data centre that produced the VOTable
+#INFO	-c=172.858720-41.689530,rs=5.	
+#Constraint -out.max=10
+
+#RESOURCE=yCat_1355
+#Name: I/355
+#Title: Gaia DR3 Part 1. Main source (Gaia Collaboration, 2022)
+#INFO	ivoid=ivo://cds.vizier/i/355	    IVOID of underlying data collection
+#INFO	data_ivoid=ivo://cds.vizier/i/355	    IVOID of underlying data collection
+#INFO	creator=Gaia collaboration	    First author or institution
+#INFO	cites=bibcode:2022yCat.1355....0G	    Bibcode of the dataset
+#INFO	journal=yCat	    Journal name
+#INFO	original_date=2022	    Year of the article publication
+#INFO	reference_url=https://cdsarc.cds.unistra.fr/viz-bin/cat/I/355	    Dataset landing page
+#INFO	citation=doi:10.26093/cds/vizier.1355	    Dataset identifier that can be used for citation
+#INFO	publication_date=2024-12-12	    Date of first publication in the data centre
+#INFO	rights_uri=https://cds.unistra.fr/vizier-org/licences_vizier.html	    Licence URI
+#Coosys	H_2016.000:	ICRS
+#Table	I_355_gaiadr3:
+#Name: I/355/gaiadr3
+#Title: Gaia DR3 source catalog (1811709771 sources)
+#Column	_r	(F5.3)	Distance from center (172.85872000000-41.68953000000)[ICRS], at Epoch=J2016.0	[ucd=pos.angDistance]
+#Column	Source	(I19)	Unique source identifier (unique within a particular Data Release) (source_id)	[ucd=meta.id;meta.main]
+#Column	RA_ICRS	(F15.11)	Right ascension (ICRS) at Ep=2016.0 (ra)	[ucd=pos.eq.ra;meta.main]
+#Column	DE_ICRS	(F15.11)	Declination (ICRS) at Ep=2016.0 (dec)	[ucd=pos.eq.dec;meta.main]
+#Column	Gmag	(F9.6)	? G-band mean magnitude (phot_g_mean_mag)	[ucd=phot.mag;em.opt]
+#Column	BP-RP	(F9.6)	? BP-RP colour (bp_rp)	[ucd=phot.color;em.opt.B;em.opt.R]
+#Column	Plx	(F9.4)	? Parallax (parallax)	[ucd=pos.parallax.trig]
+#Column	e_Plx	(F7.4)	? Standard error of parallax (parallax_error)	[ucd=stat.error;pos.parallax.trig]
+#Column	pmRA	(F9.3)	? Proper motion in right ascension direction, pmRA*cosDE (pmra)	[ucd=pos.pm;pos.eq.ra]
+#Column	pmDE	(F9.3)	? Proper motion in declination direction (pmdec)	[ucd=pos.pm;pos.eq.dec]
+#Column	RUWE	(F7.3)	? Renormalised unit weight error (ruwe)	[ucd=stat.error]
+#Column	VarFlag	(a13)	Photometric variability flag (phot_variable_flag)	[ucd=meta.code;src.var]
+_r	Source	RA_ICRS	DE_ICRS	Gmag	BP-RP	Plx	e_Plx	pmRA	pmDE	RUWE	VarFlag
+arcsec	 	deg	deg	mag	mag	mas	mas	mas/yr	mas/yr	 	
+-----	-------------------	---------------	---------------	---------	---------	---------	-------	---------	---------	-------	-------------
+0.214	5382697351745548416	172.85864231290	-41.68951735195	12.262870	 0.760335	   2.4047	 0.0125	  -13.412	    2.418	  0.997	VARIABLE
+

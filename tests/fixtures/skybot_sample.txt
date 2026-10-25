@@ -1,0 +1,5 @@
+# Flag: 1
+# Ticket: 1761407000000
+# Num | Name | RA(h) | DE(deg) | Class | Mv | Err(arcsec) | d(arcsec) | dRA(arcsec/h) | dDEC(arcsec/h) | Dg(ua) | Dh(ua)
+12345 | 1993 AB | 02 40 55.1234 | +12 36 03.123 | MB>Middle | 19.8 | 0.051 | 3.120 | -25.311 | -8.907 | 1.512 | 2.401
+- | 2026 TX12 | 02 40 54.0000 | +12 36 20.000 | NEA>Apollo | 21.4 | 12.300 | 21.500 | 120.0 | 40.0 | 0.120 | 1.050
