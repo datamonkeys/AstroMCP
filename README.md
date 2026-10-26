@@ -1,11 +1,13 @@
 # AstroMCP
 
 [![CI](https://github.com/louisperner/AstroMCP/actions/workflows/ci.yml/badge.svg)](https://github.com/louisperner/AstroMCP/actions/workflows/ci.yml)
-[![PyPI](https://img.shields.io/pypi/v/astromcp.svg)](https://pypi.org/project/astromcp/)
-[![Python](https://img.shields.io/pypi/pyversions/astromcp.svg)](https://pypi.org/project/astromcp/)
+[![PyPI](https://img.shields.io/pypi/v/astro-checker.svg)](https://pypi.org/project/astro-checker/)
+[![Python](https://img.shields.io/pypi/pyversions/astro-checker.svg)](https://pypi.org/project/astro-checker/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-<!-- mcp-name: io.github.louisperner/astromcp -->
+<!-- mcp-name: io.github.louisperner/astro-checker -->
+
+> The PyPI package is **`astro-checker`** (the name `astromcp` is too close to an unrelated existing package). The project is still called AstroMCP and both `astro-checker` and `astromcp` commands are installed.
 
 An [MCP](https://modelcontextprotocol.io) server that gives AI assistants (Claude, Cursor, VS Code, ...)
 direct, **read-only** access to public astronomy archives, so you can check a sky position in seconds and
@@ -91,8 +93,8 @@ spectroscopy groups pick classification targets.
 Requires Python 3.11+.
 
 ```bash
-uvx astromcp            # run without installing (recommended; needs uv)
-pip install astromcp    # or install into an environment, then run `astromcp`
+uvx astro-checker       # run without installing (recommended; needs uv)
+pip install astro-checker  # or install into an environment, then run `astro-checker` (alias: `astromcp`)
 ```
 
 Or with Docker (from a clone): `docker build -t astromcp . && docker run -i --rm astromcp`.
@@ -105,9 +107,9 @@ The server speaks MCP over stdio; you normally don't run it by hand, your MCP cl
 ### Claude Code
 
 ```bash
-claude mcp add astromcp -- uvx astromcp
+claude mcp add astromcp -- uvx astro-checker
 # with TNS credentials:
-claude mcp add astromcp -e TNS_BOT_ID=12345 -e TNS_BOT_NAME=my_bot -e TNS_API_KEY=... -- uvx astromcp
+claude mcp add astromcp -e TNS_BOT_ID=12345 -e TNS_BOT_NAME=my_bot -e TNS_API_KEY=... -- uvx astro-checker
 ```
 
 Add `--scope user` to make it available in every project.
@@ -136,7 +138,7 @@ Any client that launches stdio MCP servers works with command `uvx` and args `["
 `astromcp` if you installed it with pip. Try it interactively with the MCP Inspector:
 
 ```bash
-npx @modelcontextprotocol/inspector uvx astromcp
+npx @modelcontextprotocol/inspector uvx astro-checker
 ```
 
 ## Environment variables
@@ -194,8 +196,8 @@ Bump `version` in `pyproject.toml`, `src/astromcp/__init__.py` and both places i
 O AstroMCP é um servidor MCP que dá a assistentes de IA acesso direto (somente leitura) a bases públicas de
 astronomia — TNS, SIMBAD, VSX, Gaia DR3, ExoFOP-TESS, ALeRCE/ZTF, Fink/Rubin, SkyBoT e cutouts de imagem —
 para verificar rapidamente se um objeto já é conhecido. Comece por `whats_here(ra, dec)`; para planejar a noite,
-`observe_tonight(lat, lon)`. Instale com `uvx astromcp` ou `pip install astromcp` e, no Claude Code,
-`claude mcp add astromcp -- uvx astromcp`. Credenciais do bot do TNS (opcionais) vão nas variáveis
+`observe_tonight(lat, lon)`. Instale com `uvx astro-checker` ou `pip install astro-checker` e, no Claude Code,
+`claude mcp add astromcp -- uvx astro-checker`. Credenciais do bot do TNS (opcionais) vão nas variáveis
 `TNS_BOT_ID`, `TNS_BOT_NAME` e `TNS_API_KEY` e nunca aparecem nas respostas. As respostas dependem de serviços
 externos: confirme na fonte antes de anunciar uma descoberta.
 

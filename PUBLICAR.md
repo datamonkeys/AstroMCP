@@ -65,27 +65,27 @@ rm -rf dist && uv build
 UV_PUBLISH_TOKEN=pypi-... uv publish
 ```
 
-4. Teste de fora: `uvx astromcp` deve subir (Ctrl+C para sair) e
-   `uvx --from astromcp python -c "import astromcp; print(astromcp.__version__)"` deve imprimir 0.1.0.
+4. Teste de fora: `uvx astro-checker` deve subir (Ctrl+C para sair) e
+   `uvx --from astro-checker python -c "import astromcp; print(astromcp.__version__)"` deve imprimir 0.1.0.
 5. Marque a versão: `git tag v0.1.0 && git push origin v0.1.0 && gh release create v0.1.0 --notes-file CHANGELOG.md`
 
 ## 4. Publicar no registro oficial de servidores MCP
 
-O `server.json` já está pronto (nome `io.github.louisperner/astromcp`, pacote PyPI `astromcp` 0.1.0). O registro
-confere a posse do pacote procurando `mcp-name: io.github.louisperner/astromcp` no README publicado no PyPI
+O `server.json` já está pronto (nome `io.github.louisperner/astro-checker`, pacote PyPI `astro-checker` 0.1.0). O registro
+confere a posse do pacote procurando `mcp-name: io.github.louisperner/astro-checker` no README publicado no PyPI
 (já está lá num comentário HTML), então só faça isto **depois** do passo 3.
 
 ```bash
 brew install mcp-publisher
 mcp-publisher login github        # abre o fluxo do GitHub; precisa ser a conta louisperner
 mcp-publisher publish             # na pasta do projeto, lê ./server.json
-curl -s "https://registry.modelcontextprotocol.io/v0/servers?search=io.github.louisperner/astromcp"
+curl -s "https://registry.modelcontextprotocol.io/v0/servers?search=io.github.louisperner/astro-checker"
 ```
 
 ## 5. Atualizar o seu Claude Code para usar o pacote publicado (opcional)
 
 `scripts/registrar_claude.sh` registra usando o checkout local (`uv run --directory`). Para usar o PyPI:
-`claude mcp add astromcp -s user -e TNS_BOT_ID=... -e TNS_BOT_NAME=... -e TNS_API_KEY=... -- uvx astromcp`.
+`claude mcp add astromcp -s user -e TNS_BOT_ID=... -e TNS_BOT_NAME=... -e TNS_API_KEY=... -- uvx astro-checker`.
 
 ## Próximas versões
 

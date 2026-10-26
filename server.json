@@ -1,6 +1,6 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.louisperner/astromcp",
+  "name": "io.github.louisperner/astro-checker",
   "title": "AstroMCP",
   "description": "Read-only access to public astronomy archives: TNS, SIMBAD, VSX, Gaia, TESS, ZTF, Rubin, SkyBoT.",
   "repository": {
@@ -13,7 +13,7 @@
     {
       "registryType": "pypi",
       "registryBaseUrl": "https://pypi.org",
-      "identifier": "astromcp",
+      "identifier": "astro-checker",
       "version": "0.1.0",
       "runtimeHint": "uvx",
       "transport": {
