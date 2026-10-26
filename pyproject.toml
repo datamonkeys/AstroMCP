@@ -69,3 +69,6 @@ markers = ["integration: queries the real archives (run with: pytest -m integrat
 addopts = "-m 'not integration'"
 asyncio_mode = "auto"
 pythonpath = ["tests"]
+
+[tool.uv.build-backend]
+module-name = "astromcp"
