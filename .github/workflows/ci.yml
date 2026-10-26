@@ -32,3 +32,11 @@ jobs:
         run: uv run pytest -m "not integration"
       - name: Build
         run: uv build
+
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Dependency audit (pip-audit)
+        run: uv export --frozen --no-dev --no-emit-project --format requirements-txt > requirements.txt && uvx pip-audit --strict --disable-pip -r requirements.txt

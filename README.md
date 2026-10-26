@@ -95,6 +95,9 @@ uvx astromcp            # run without installing (recommended; needs uv)
 pip install astromcp    # or install into an environment, then run `astromcp`
 ```
 
+Or with Docker (from a clone): `docker build -t astromcp . && docker run -i --rm astromcp`.
+See [`.env.example`](.env.example) for the optional variables.
+
 The server speaks MCP over stdio; you normally don't run it by hand, your MCP client launches it.
 
 ## Configure your MCP client
