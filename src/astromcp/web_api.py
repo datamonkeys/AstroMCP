@@ -18,6 +18,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from typing import Any
 from urllib.parse import parse_qs, urlparse
 
+from .observe import observe_tonight
 from .util import validate_position
 from .whats_here import whats_here
 
@@ -52,17 +53,35 @@ def answer(query: dict[str, list[str]]) -> tuple[int, dict[str, Any]]:
     return 200, r
 
 
+def answer_tonight(query: dict[str, list[str]]) -> tuple[int, dict[str, Any]]:
+    try:
+        lat = float(query["lat"][0])
+        lon = float(query["lon"][0])
+        date = query.get("date", [None])[0] or None
+        mag = float(query.get("mag_limit", ["18.5"])[0])
+        if not (-90 <= lat <= 90 and -180 <= lon <= 360) or not (10 <= mag <= 21):
+            raise ValueError("lat/lon/mag_limit out of range")
+    except (KeyError, ValueError, IndexError) as e:
+        return 400, {"error": f"invalid query: {e}"}
+    try:
+        return 200, observe_tonight(lat, lon, date, mag_limit=mag, limit=40)
+    except ValueError as e:
+        return 503, {"error": str(e)}
+
+
 class Handler(BaseHTTPRequestHandler):
     server_version = "astromcp-web"
 
     def do_GET(self) -> None:  # noqa: N802
         url = urlparse(self.path)
-        if not url.path.rstrip("/").endswith("/whats_here"):
+        rota = url.path.rstrip("/").rsplit("/", 1)[-1]
+        if rota not in ("whats_here", "observe_tonight"):
             return self._send(404, {"error": "not found"})
         ip = self.headers.get("X-Real-IP") or self.client_address[0]
         if not _allowed(ip):
             return self._send(429, {"error": "too many requests, wait a minute"})
-        code, body = answer(parse_qs(url.query))
+        q = parse_qs(url.query)
+        code, body = answer(q) if rota == "whats_here" else answer_tonight(q)
         self._send(code, body)
 
     def _send(self, code: int, body: dict[str, Any]) -> None:
